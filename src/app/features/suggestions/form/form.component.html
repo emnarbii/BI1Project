@@ -1,0 +1,35 @@
+<p>form works!</p>
+
+<form [formGroup]="suggForm">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" formControlName="title" />
+  </div>
+
+  <div *ngIf="title?.touched">
+    <span *ngIf="suggForm.get('title')?.errors?.['required']" style="color:red">this field is required</span>
+     <span *ngIf="suggForm.get('title')?.errors?.['minlength']" style="color:red">at least 5 carateres</span>
+    <span *ngIf="suggForm.get('title')?.errors?.['pattern']" style="color:red">respect pattern</span>
+
+
+</div>
+  <div class="mb-3">
+    <label class="form-label">Description</label>
+    <input type="text" class="form-control" formControlName="description"/>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+    <select class="form-select"  formControlName="category">
+      <option>Disabled select</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Date</label>
+    <input type="text" class="form-control" formControlName="date" readonly/>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Status</label>
+    <input type="text" class="form-control" formControlName="status" readonly/>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="afficher()">Submit</button>
+</form>

@@ -17,6 +17,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
     FooterComponent,
     HomeComponent,
     NotFoundComponent,
+   
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
