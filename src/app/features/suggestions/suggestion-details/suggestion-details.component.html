@@ -1,0 +1,11 @@
+<a routerLink="/suggestions">back to list</a>
+<ul *ngIf="suggestion!==undefined">
+  <li>title: {{suggestion.title | uppercase}}
+  </li>
+  <li>catagory: {{suggestion.category}}</li>
+  <li>date: {{suggestion.date | date}}</li>
+  <li>descriptiontagory: {{suggestion.description}}</li>
+  <li>status: {{suggestion.status}}</li>
+</ul>
+
+

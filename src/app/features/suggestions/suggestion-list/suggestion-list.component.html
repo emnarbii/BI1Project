@@ -1,0 +1,55 @@
+<div class="container" style="margin-top: 50px">
+  <h4>Suggestion List</h4>
+  <div div class="input-group mb-3">
+    <input class="input-group" type="text" placeholder="title, category"  [(ngModel)]="searchItem"/>
+  </div>
+  {{searchItem}}
+  <div class="row">
+    <div class="col-8">
+      <div
+        class="card"
+        *ngFor="let suggestion of filter()"
+        style="margin-bottom: 10px"
+      >
+        <h5 class="card-header">{{ suggestion.title }}</h5>
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ suggestion.category }} -- {{ suggestion.date |date }}
+          </h5>
+          <p class="card-text">
+            {{ suggestion.description |lowercase }}
+          </p>
+          <button
+            type="button"
+            class="btn btn-primary"
+            *ngIf="
+              suggestion.status !== 'refusee' &&
+              suggestion.status !== 'en_attente'
+            "
+            (click)="incrementNbLikes(suggestion)"
+          >
+            Like-{{ suggestion.nbLikes }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            *ngIf="
+              suggestion.status !== 'refusee' &&
+              suggestion.status !== 'en_attente'
+            "
+            (click)="addToFavorite(suggestion)"
+          >
+            Add to favorite
+          </button>
+          <a [routerLink]="['/suggestions',suggestion.id]">Détails</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <h4>favorite list</h4>
+      <ul *ngFor="let favorite of favoriteList">
+        <li>{{ favorite.title }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
